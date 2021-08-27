@@ -19,11 +19,11 @@ class CreateProductsTable extends Migration
             $table->string('name')->nullable();
             $table->text('detail')->nullable();
             $table->text('category')->nullable();
-            $table->text('image')->nullable();
-            $table->integer('productUnit')->nullable();
+            $table->text('picturePath')->nullable();
+            $table->integer('product_unit')->nullable();
             $table->integer('price')->nullable();
             $table->integer('discount')->nullable();
-            $table->integer('priceAfterDiscount')->nullable();
+            $table->integer('price_after_discount')->nullable();
 
             $table->softDeletes();
             $table->timestamps();
