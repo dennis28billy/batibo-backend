@@ -15,47 +15,51 @@ class TransactionController extends Controller
         $id = $request->input('id');
         $limit = $request->input('limit', 6);
         $product_id = $request->input('product_id');
-        $status = $request->input('status')
+        $status = $request->input('status');
 
         if($id)
         {
-            $product = transaction::with(['product', 'user']);
+            $transaction = transaction::with(['product', 'user'])->find($id);
 
             if($transaction){
                 return ResponseFormatter::success(
                     $transaction,
-                    'Data transaction berhasil diambil'
+                    'Data transaksi berhasil diambil'
                 );
             }
             else{
                 return ResponseFormatter::error(
                     null,
-                    'Data transaction tidak ada',
+                    'Data transaksi tidak ada',
                     404
                 );
             }
         }
 
-        $transaction = transaction::with(['food', 'user'])->where('user_id',Auth::user()->id);
+        $transaction = transaction::with(['product', 'user'])->where('user_id', Auth::user()->id);
 
         if($product_id)
         {
-            $transaction->where('name', $product_id);
+            $transaction->where('product_id', $product_id);
         }
 
         if($status)
         {
-            $transaction->where('name', $status);
-        }
-
-        if($category)
-        {
-            $transaction->where('name','like','%'. $category . '%');
+            $transaction->where('status', $status);
         }
 
         return ResponseFormatter::success(
             $transaction->paginate($limit),
             'Data list transaksi berhasil diambil'
         );
+    }
+
+    public function update(Request $request, $id)
+    {
+        $transaction = transaction::findOrFail($id);
+
+        $transaction->update($request->all());
+
+        return ResponseFormatter::success($transaction, 'Transaksi berhasil diperbarui');
     }
 }

@@ -5,6 +5,7 @@ namespace App\Models;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class transaction extends Model
 {
@@ -15,7 +16,7 @@ class transaction extends Model
     ];
 
     public function products(){
-        return $this->hasOne(products::class, 'id', 'food_id');
+        return $this->hasOne(products::class, 'id', 'product_id');
     }
 
     public function user(){

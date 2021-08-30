@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers\API;
 
+use App\Helpers\ResponseFormatter;
 use App\Http\Controllers\Controller;
+use App\Models\products;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -19,11 +21,11 @@ class ProductController extends Controller
 
         if($id)
         {
-            $product = product::find($id);
+            $product = products::find($id);
 
-            if($food){
+            if($product){
                 return ResponseFormatter::success(
-                    $food,
+                    $product,
                     'Data produk berhasil diambil'
                 );
             }
@@ -36,7 +38,7 @@ class ProductController extends Controller
             }
         }
 
-        $product = product::query();
+        $product = products::query();
 
         if($name)
         {
@@ -50,12 +52,12 @@ class ProductController extends Controller
 
         if($price_from)
         {
-            $product->where('price','>=','%', $price_from);
+            $product->where('price','>=', $price_from);
         }
 
         if($price_to)
         {
-            $product->where('price','<=','%', $price_to);
+            $product->where('price','<=', $price_to);
         }
 
         return ResponseFormatter::success(

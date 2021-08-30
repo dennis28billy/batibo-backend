@@ -2,8 +2,13 @@
 
 namespace App\Http\Controllers\API;
 
+use App\Actions\Fortify\PasswordValidationRules;
+use App\Helpers\ResponseFormatter;
 use App\Http\Controllers\Controller;
+use App\Models\User;
+use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
@@ -50,6 +55,7 @@ class UserController extends Controller
                 'error' => $error
             ], 'Authentication Failed', 500);
         }
+
     }
 
     public function register(Request $request)
@@ -65,7 +71,7 @@ class UserController extends Controller
                 'name' => $request->name,
                 'email' => $request->email,
                 'address' => $request->address,
-                'phone_number' => $request->phoneNumber,
+                'phone_number' => $request->phone_number,
                 'password' => Hash::make($request->password),
             ]);
 
@@ -95,7 +101,9 @@ class UserController extends Controller
 
     public function fetch(Request $request)
     {
-        return ResponseFormatter::success($request->user(), 'Data profile user berhasil diambil');
+        return ResponseFormatter::success(
+            $request->user(), 'Data profile user berhasil diambil'
+        );
     }
 
     public function updateProfile(Request $request)
@@ -118,7 +126,7 @@ class UserController extends Controller
         if($validator->fails())
         {
             return ResponseFormatter::error(
-                ['error' => $validator->error()],
+                ['error' => $validator->errors()],
                 'Update photo fails',
                 401
             );
@@ -127,7 +135,7 @@ class UserController extends Controller
         //jika file ada
         if($request->file('file'))
         {
-            $file= $request->file->store('assets/user', 'public');
+            $file = $request->file->store('assets/user', 'public');
 
             // Simpan foto ke database (urlnya)
             $user = Auth::user();
