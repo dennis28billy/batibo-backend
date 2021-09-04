@@ -32,7 +32,7 @@ class products extends Model
     }
 
     public function getPicturePathAttribute(){
-        return url('') . Storage::url($this->attributes['pictureePath']);
+        return url('') . Storage::url($this->attributes['picturePath']);
     }
 
 

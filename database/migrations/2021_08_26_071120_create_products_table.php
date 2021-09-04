@@ -20,7 +20,7 @@ class CreateProductsTable extends Migration
             $table->text('detail')->nullable();
             $table->text('category')->nullable();
             $table->text('picturePath')->nullable();
-            $table->integer('product_unit')->nullable();
+            $table->text('product_unit')->nullable();
             $table->integer('price')->nullable();
             $table->integer('discount')->nullable();
             $table->integer('price_after_discount')->nullable();
