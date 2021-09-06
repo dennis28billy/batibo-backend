@@ -20,8 +20,8 @@ class CreateTransactionsTable extends Migration
             $table->integer('product_id');
             $table->integer('quantity');
             $table->integer('total');
-            $table->integer('status');
-            $table->integer('payment_url');
+            $table->string('status');
+            $table->text('payment_url');
         
             $table->softDeletes();
             $table->timestamps();
