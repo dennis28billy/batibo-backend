@@ -7,16 +7,17 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class transaction extends Model
+class Carts extends Model
 {
     use HasFactory, SoftDeletes;
 
     protected $fillable = [
-        'user_id', 'total', 'status', 'payment_url'
+        'user_id', 'product_id', 'quantity', 'total'
     ];
 
-    public function cart(){
-        return $this->hasOne(Carts::class, 'id', 'cart_id');
+
+    public function product(){
+        return $this->hasOne(products::class, 'id', 'product_id');
     }
 
     public function user(){

@@ -6,7 +6,6 @@ use App\Actions\Fortify\PasswordValidationRules;
 use App\Helpers\ResponseFormatter;
 use App\Http\Controllers\Controller;
 use App\Models\User;
-use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -70,7 +69,6 @@ class UserController extends Controller
             User::create([
                 'name' => $request->name,
                 'email' => $request->email,
-                'address' => $request->address,
                 'phone_number' => $request->phone_number,
                 'password' => Hash::make($request->password),
             ]);

@@ -1,6 +1,9 @@
 <?php
 
+use App\Http\Controllers\API\AddressController;
+use App\Http\Controllers\API\CartController;
 use App\Http\Controllers\API\MidtransController;
+use App\Http\Controllers\API\OrderController;
 use App\Http\Controllers\API\ProductController;
 use App\Http\Controllers\API\TransactionController;
 use App\Http\Controllers\API\UserController;
@@ -24,10 +27,21 @@ Route::middleware('auth:sanctum')->group(function(){
     Route::post('user/photo', [UserController::class, 'updatePhoto']);
     Route::post('logout', [UserController::class, 'logout']);
 
+    Route::get('address', [AddressController::class, 'all']);
+    Route::post('address/add', [AddressController::class, 'addAddress']);
+    Route::post('address/{id}', [AddressController::class, 'updateAddress']);
+
+    Route::get('cart', [CartController::class, 'all']);
+    Route::post('cart/add', [CartController::class, 'addCart']);
+    Route::post('cart/{id}', [CartController::class, 'updateCart']);
+
     Route::post('checkout', [TransactionController::class, 'checkout']);
 
     Route::get('transaction', [TransactionController::class, 'all']);
     Route::post('transaction/{id}', [TransactionController::class, 'update']);
+
+    Route::get('order', [OrderController::class, 'all']);
+    Route::post('order/add', [OrderController::class, 'addOrder']);
 });
 
 Route::post('login', [UserController::class, 'login']);

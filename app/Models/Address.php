@@ -7,17 +7,15 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class transaction extends Model
+class Address extends Model
 {
     use HasFactory, SoftDeletes;
 
     protected $fillable = [
-        'user_id', 'total', 'status', 'payment_url'
+        'user_id', 'kategori', 'provinsi', 'kota_kabupaten', 'kelurahan', 'kecamatan',
+        'detail_alamat'
     ];
 
-    public function cart(){
-        return $this->hasOne(Carts::class, 'id', 'cart_id');
-    }
 
     public function user(){
         return $this->hasOne(User::class, 'id', 'user_id');
@@ -30,6 +28,4 @@ class transaction extends Model
     public function getUpdatedAtAttribute($value){
         return Carbon::parse($value)->timestamp;
     }
-
-
 }

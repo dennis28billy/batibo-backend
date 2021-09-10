@@ -5,7 +5,6 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use App\Models\transaction;
 use App\Helpers\ResponseFormatter;
-use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Midtrans\Config;
@@ -17,12 +16,12 @@ class TransactionController extends Controller
     {
         $id = $request->input('id');
         $limit = $request->input('limit', 6);
-        $product_id = $request->input('product_id');
+        // $cart_id = $request->input('cart_id');
         $status = $request->input('status');
 
         if($id)
         {
-            $transaction = transaction::with(['product', 'user'])->find($id);
+            $transaction = transaction::with(['cart', 'user'])->find($id);
 
             if($transaction){
                 return ResponseFormatter::success(
@@ -39,12 +38,12 @@ class TransactionController extends Controller
             }
         }
 
-        $transaction = transaction::with(['product', 'user'])->where('user_id', Auth::user()->id);
+        $transaction = transaction::with(['cart', 'user'])->where('user_id', Auth::user()->id);
 
-        if($product_id)
-        {
-            $transaction->where('product_id', $product_id);
-        }
+        // if($cart_id)
+        // {
+        //     $transaction->where('cart_id', $cart_id);
+        // }
 
         if($status)
         {
@@ -57,6 +56,7 @@ class TransactionController extends Controller
         );
     }
 
+    //fungsi opsional
     public function update(Request $request, $id)
     {
         $transaction = transaction::findOrFail($id);
@@ -68,17 +68,13 @@ class TransactionController extends Controller
 
     public function checkout(Request $request){
         $request->validate([
-            'product_id' => 'required|exists:products,id',
             'user_id' => 'required|exists:users,id',
-            'quantity' => 'required',
             'total' => 'required',
             'status' => 'required',
         ]);
 
         $transaction = transaction::create([
-            'product_id' => $request->product_id,
             'user_id' => $request->user_id,
-            'quantity' => $request->quantity,
             'total' => $request->total,
             'status' => $request->status,
             'payment_url' => '',
@@ -91,7 +87,7 @@ class TransactionController extends Controller
         Config::$is3ds = config('services.midtrans.is3ds');
 
         // Panggil transaksi yang dibuat
-        $transaction = transaction::with(['product', 'user'])->find($transaction->id);
+        $transaction = transaction::with(['user'])->find($transaction->id);
 
         // Membuat transaksi midtrans
         $midtrans = [
