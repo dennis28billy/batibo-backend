@@ -6,31 +6,33 @@
     </x-slot>
 
     <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+        <div class="mx-auto sm:px-6 lg:px-8">
             <div class="bg-white">
                 <table class="table-auto w-full">
                     <thead>
                         <tr>
                             <th class="border px-6 py-4">ID</th>
-                            <th class="border px-6 py-4">Product</th>
+                            {{-- <th class="border px-6 py-4">Product</th> --}}
                             <th class="border px-6 py-4">User</th>
-                            <th class="border px-6 py-4">Quantity</th>
+                            {{-- <th class="border px-6 py-4">Quantity</th> --}}
                             <th class="border px-6 py-4">Total</th>
                             <th class="border px-6 py-4">Status</th>
+                            <th class="border px-6 py-4">Payment URL</th>
                             <th class="border px-6 py-4">Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @forelse ($transactions as $item)
+                        @forelse ($transactions->sortBy('timestamps') as $item)
                             <tr>
                                 <td class="border px-6 py-4">{{ $item->id }}</td>
-                                <td class="border px-6 py-4">{{ $item->products->name }}</td>
+                                {{-- <td class="border px-6 py-4">{{ $item->products->name }}</td> --}}
                                 <td class="border px-6 py-4">{{ $item->user->name }}</td>
-                                <td class="border px-6 py-4">{{ $item->quantity }}</td>
-                                <td class="border px-6 py-4">{{ number_format($item->total) }}</td>
+                                {{-- <td class="border px-6 py-4">{{ $item->quantity }}</td> --}}
+                                <td class="border px-6 py-4">Rp. {{ number_format($item->total) }}</td>
                                 <td class="border px-6 py-4">{{ $item->status }}</td>
+                                <td class="border px-6 py-4"><a href="{{ $item->payment_url }}">{{ $item->payment_url }}</a></td>
                                 <td class="border px-6 py-4 text-center">
-                                    <a href="{{ route('transactions.show', $item->id) }}" class="inline-block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mx-2 rounded"> 
+                                    <a href="{{ route('transactions.show', $item->id) }}" class="inline-block bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 mx-2 rounded"> 
                                         View 
                                     </a>
                                     <form action="{{ route('transactions.destroy', $item->id) }}" method="POST" class="inline-block">

@@ -15,8 +15,8 @@ class transaction extends Model
         'user_id', 'total', 'status', 'payment_url'
     ];
 
-    public function cart(){
-        return $this->hasOne(Carts::class, 'id', 'cart_id');
+    public function order(){
+        return $this->hasMany(Order::class, 'transaction_id');
     }
 
     public function user(){

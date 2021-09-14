@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            Transaction &raquo; {{ $item->products->name }} by {{ $item->user->name }}
+            Transaction &raquo; {{ $item->id }} by {{ $item->user->name }}
         </h2>
     </x-slot>
 
@@ -10,18 +10,19 @@
             <div class="w-full rounded overflow-hidden shadow-lg px-6 py-6 bg-white">
                 <div class="flex flex-wrap -mx-4 -mb-4 md:mb-0">
                     <div class="w-full md:w-1/6 px-4 mb-4 md:mb-0">
-                        <img src="{{ $item->products->picturePath }}" alt="asdf" class="w-full rounded"> 
+                        
+                        <img component="span" src="{{ asset('batibofavicon.png') }}" alt="asdf" class="w-full rounded"> 
                     </div>
                     <div class="w-full md:w-5/6 px-4 mb-4 md:mb-0">
                         <div class="flex flex-wrap mb-3">
-                            <div class="w-2/6">
+                            {{-- <div class="w-2/6">
                                 <div class="text-sm">Product Name</div>
                                 <div class="text-xl font-bold">{{ $item->products->name }}</div>
-                            </div>
-                            <div class="w-1/6">
+                            </div> --}}
+                            {{-- <div class="w-1/6">
                                 <div class="text-sm">Quantity</div>
                                 <div class="text-xl font-bold">{{ number_format($item->quantity) }}</div>
-                            </div>
+                            </div> --}}
                             <div class="w-1/6">
                                 <div class="text-sm">Total</div>
                                 <div class="text-xl font-bold">{{ number_format($item->total) }}</div>
@@ -85,6 +86,48 @@
                     </div>
                 </div>
             </div>
+            <div class="bg-white">
+                <table class="table-auto w-full" cellpadding="0" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th class="border px-6 py-4">ID</th>
+                            <th class="border px-6 py-4">Image</th>
+                            <th class="border px-6 py-4">Name</th>
+                            <th class="border px-6 py-4">Category</th>
+                            <th class="border px-6 py-4">Product Unit</th>
+                            <th class="border px-6 py-4">Price</th>
+                            <th class="border px-6 py-4">Quantity</th>
+                            <th class="border px-6 py-4">Discount</th>
+                            <th class="border px-6 py-4">Total Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @forelse ($item->order as $prods)
+                            <tr>
+                                <td class="border px-6 py-4">{{ $prods->id }}</td>
+                                <td style="text-align: center" class="border py-0 object-fill">
+                                    <img src="{{ $prods->product->picturePath }}" alt="img: {{ $prods->product->name }}" class="inline-block object-scale-down h-1/2 w-1/2"/>
+                                </td>
+                                <td class="border px-6 py-4">{{ $prods->product->name }}</td>
+                                <td class="border px-6 py-4">{{ $prods->product->category }}</td>
+                                <td class="border px-6 py-4">{{ $prods->product->product_unit }}</td>
+                                <td class="border px-6 py-4">Rp.{{ number_format($prods->product->price) }}</td>
+                                <td class="border px-6 py-4">{{ $prods->quantity }}</td>
+                                <td class="border px-6 py-4">{{ $prods->product->discount }}%</td>
+                                <td class="border px-6 py-4">Rp.{{ $prods->total }}</td>
+                            </tr> 
+                        @empty
+                            <tr>
+                                <td colspan="9" class="border text-center p-5">
+                                    Data not found
+                                </td>
+                            </tr>
+                        @endforelse
+                    </tbody>
+                </table>
+            </div>
         </div>
+
+
     </div>
 </x-app-layout>

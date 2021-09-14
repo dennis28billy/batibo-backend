@@ -15,10 +15,14 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = products::paginate(5);
+        $products = products::latest();
+
+        if(request('search')) {
+            $products->where('name', 'like', '%' . request('search') . '%');
+        }
 
         return view('products.index',[
-            'product' => $products
+            'product' => $products->paginate(5)
         ]);
     }
 
