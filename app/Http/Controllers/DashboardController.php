@@ -13,8 +13,8 @@ class DashboardController extends Controller
     public function index()
     {
         $products = products::latest()->paginate(4);
-        $user = User::latest()->paginate(4);
-        $transaction = transaction::with(['order','user'])->latest()->paginate(4);
+        $user = User::latest()->paginate(6);
+        $transaction = transaction::with(['order','user'])->latest()->paginate(6);
 
         return view('dashboard',[
             'products' => $products,

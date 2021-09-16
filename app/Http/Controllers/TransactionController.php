@@ -14,10 +14,14 @@ class TransactionController extends Controller
      */
     public function index()
     {
-        $transaction = transaction::with(['order','user'])->paginate(10);
+        $transaction = transaction::latest()->with(['order','user']);
+
+        if(request('search')) {
+            $transaction->where('status', 'like', '%' . request('search') . '%');
+        }
 
         return view('transactions.index',[
-            'transactions' => $transaction
+            'transactions' => $transaction->paginate(10)
         ]);
     }
 

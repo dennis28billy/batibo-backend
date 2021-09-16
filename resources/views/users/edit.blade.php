@@ -27,83 +27,64 @@
                 <form class="w-full" action="{{ route('users.update', $item->id) }}" method="post" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
-                    <div class="flex flex-wrap -mx-3 mb-6">
-                        <div class="w-full px-3">
-                            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
-                                Photo
-                            </label>
-                            <img src="{{ $item->picturePath }}" alt="img: {{ $item->name }}" class="inline-block"/>
-                            {{-- <input value="{{ old('name') }}" name="name" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-last-name" type="text" placeholder="User Name"> --}}
+                    
+                    <div class="md:flex flex-row md:space-x-4 w-full text-xs">
+                        <div class="mb-3 space-y-2 w-full text-xs">
+                            <label class="font-semibold text-gray-600 py-2">NAME<abbr title="required"></abbr></label>
+                            <input value="{{ old('name') ?? $item->name }}" placeholder="User Name" class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg h-10 px-4" required="required" type="text" name="name" id="name">
+                            <p class="text-red text-xs hidden">Please fill out this field.</p>
+                        </div>
+                        <div class="mb-3 space-y-2 w-full text-xs">
+                            <label class="font-semibold text-gray-600 py-2">EMAIL<abbr title="required"></abbr></label>
+                            <input value="{{ old('email') ?? $item->email }}" placeholder="Email" class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg h-10 px-4" required="required" type="text" name="email" id="email">
+                            <p class="text-red text-xs hidden">Please fill out this field.</p>
                         </div>
                     </div>
-                    <div class="flex flex-wrap -mx-3 mb-6">
-                        <div class="w-full px-3">
-                            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
-                                Name
-                            </label>
-                            <input value="{{ old('name') ?? $item->name }}" name="name" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-last-name" type="text" placeholder="User Name">
+
+                    <div class="mb-3 space-y-2 w-full text-xs">
+                        <label class=" font-semibold text-gray-600 py-2">PROFILE PHOTO</label>
+                        <div class="flex rounded-lg border-dashed border border-gray-700 py-12 flex flex-col justify-center items-center bg-white">
+                            <input type="file" value="{{ old('profile_photo_path') ?? $item->profile_photo_path }}" name="profile_photo_path" placeholder="Choose image" id="image">
+                                @error('image')
+                                <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
+                                @enderror
+                            <div class="col-md-12 mb-2">
+                                <img id="preview-image-before-upload" src="{{ old('profile_photo_path') ?? $item->profile_photo_path }}"
+                                    alt="preview image" style="max-height: 250px;">
+                            </div>
                         </div>
                     </div>
-                    <div class="flex flex-wrap -mx-3 mb-6">
-                        <div class="w-full px-3">
-                            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
-                                Email
-                            </label>
-                            <input value="{{ old('email') ?? $item->email }}" name="email" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-last-name" type="email" placeholder="User Email">
+                    
+                    <div class="mb-3 space-y-2 w-full text-xs">
+                        <div class="md:flex md:flex-row md:space-x-4 w-full text-xs">
+                            <div class="w-full flex flex-col mb-3">
+                                <label class="font-semibold text-gray-600 py-2">PASSWORD</label>
+                                <input value="{{ old('password') }}" type="password" name="password" id="password" placeholder="Password" class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg h-10 px-4" >
+                            </div>
+                            <div class="w-full flex flex-col mb-3">
+                                <label class="font-semibold text-gray-600 py-2">PASSWORD CONFIRMATION</label>
+                                <input value="{{ old('password_confirmation') }}" type="password" name="password_confirmation" id="password_confirmation" placeholder="Password Confirmation" class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg h-10 px-4">
+                            </div>
+                            
+                        </div>
+                        <div class="md:flex flex-row md:space-x-4 w-full text-xs">
+                            <div class="w-full flex flex-col mb-3">
+                                <label class="font-semibold text-gray-600 py-2">PHONE NUMBER<abbr title="required"></abbr></label>
+                                <input value="{{ old('phone_number') ?? $item->phone_number }}" placeholder="Phone Number" class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg h-10 px-4" required="required" type="number" name="phone_number" id="phone_number">
+                                <p class="text-red text-xs hidden">Please fill out this field.</p>
+                            </div>
+                            <div class="w-full flex flex-col mb-3">
+                                <label class="font-semibold text-gray-600 py-2">ROLES<abbr title="required"></abbr></label>
+                                <select class="block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg h-10 px-4 md:w-full" name="roles" id="roles">
+                                    <option value="{{ $item->roles }}">{{ $item->roles }}</option>
+                                    <option value="USER">User</option>
+                                    <option value="ADMIN">Admin</option>
+                                </select>
+                            </div>
                         </div>
                     </div>
-                    <div class="flex flex-wrap -mx-3 mb-6">
-                        <div class="w-full px-3">
-                            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
-                                Image
-                            </label>
-                            <input name="profile_photo_path" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-last-name" type="file" placeholder="User Image">
-                        </div>
-                    </div>
-                    <div class="flex flex-wrap -mx-3 mb-6">
-                        <div class="w-full px-3">
-                            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
-                                Password
-                            </label>
-                            <input value="{{ old('password') }}" name="password" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-last-name" type="password" placeholder="User Password">
-                        </div>
-                    </div>
-                    <div class="flex flex-wrap -mx-3 mb-6">
-                        <div class="w-full px-3">
-                            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
-                                Password Confirmation
-                            </label>
-                            <input value="{{ old('password_confirmation') }}" name="password_confirmation" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-last-name" type="password" placeholder="User Password Confirmation">
-                        </div>
-                    </div>
-                    <div class="flex flex-wrap -mx-3 mb-6">
-                        <div class="w-full px-3">
-                            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
-                                Address
-                            </label>
-                            <input value="{{ old('address') ?? $item->address }}" name="address" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-last-name" type="text" placeholder="User Address">
-                        </div>
-                    </div>
-                    <div class="flex flex-wrap -mx-3 mb-6">
-                        <div class="w-full px-3">
-                            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
-                                Roles
-                            </label>
-                            <select name="roles" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-last-name">
-                                <option value="{{ $item->roles }}">{{ $item->roles }}</option>
-                                <option value="USER">User</option>
-                                <option value="ADMIN">Admin</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="flex flex-wrap -mx-3 mb-6">
-                        <div class="w-full px-3">
-                            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
-                                Phone Number
-                            </label>
-                            <input value="{{ old('phone_number') ?? $item->phone_number }}" name="phone_number" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-last-name" type="number" placeholder="User Phone Number">
-                        </div>
-                    </div>
+
+                    
                     <div class="flex flex-wrap -mx-3 mb-6">
                         <div class="w-full px-3 text-right">
                             <button type="submit" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
@@ -115,5 +96,21 @@
             </div>
             </div>
         </div>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+ 
+        <script type="text/javascript">
+            
+        $(document).ready(function (e) {
+            $('#image').change(function(){
+                let reader = new FileReader();
+                reader.onload = (e) => { 
+                $('#preview-image-before-upload').attr('src', e.target.result); 
+                }
+                reader.readAsDataURL(this.files[0]); 
+            });
+        });
+        </script>
+        
     </div>
 </x-app-layout>

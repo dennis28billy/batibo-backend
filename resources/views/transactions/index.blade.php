@@ -7,6 +7,19 @@
 
     <div class="py-12">
         <div class="mx-auto sm:px-6 lg:px-8">
+            <div class="row">
+                <div class="col-md-6">
+                    <form action="/dashboard/transactions">
+                        <div class="flex flex-wrap items-stretch w-1/3 mb-4 relative ">
+                            <input type="text" class="flex-shrink flex-grow flex-auto leading-normal w-px flex-1 border h-10 border-grey-light rounded rounded-r-none px-3 relative" placeholder="Search.." name="search" value="{{ request('search') }}">
+                            <div class="flex -mr-px px-2">
+                                <button class="flex bg-green-500 text-white items-center leading-normal bg-grey-lighter rounded rounded-l-none border border-l-0 border-grey-light px-3 whitespace-no-wrap text-grey-dark text-sm" type="submit">Search</button>
+                                {{-- <span class="flex items-center leading-normal bg-grey-lighter rounded rounded-l-none border border-l-0 border-grey-light px-3 whitespace-no-wrap text-grey-dark text-sm">@example.com</span> --}}
+                            </div>	
+                        </div>
+                    </form>
+                </div>
+            </div>
             <div class="bg-white">
                 <table class="table-auto w-full">
                     <thead>

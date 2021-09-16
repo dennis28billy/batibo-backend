@@ -15,10 +15,14 @@ class UserController extends Controller
      */
     public function index()
     {
-        $user = User::paginate(8);
+        $user = User::latest();
+
+        if(request('search')) {
+            $user->where('name', 'like', '%' . request('search') . '%');
+        }
 
         return view('users.index',[
-            'user' => $user
+            'user' => $user->paginate(8)
         ]);
     }
 
