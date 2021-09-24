@@ -5,8 +5,8 @@
         </h2>
     </x-slot>
 
-    <div class="py-12">
-        <div class=" mx-auto sm:px-6 lg:px-8">
+    <div>
+        <div class=" mx-auto">
             <div class="mb-10">
                 <a href="{{ route('products.create') }}" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
                 + Create Product

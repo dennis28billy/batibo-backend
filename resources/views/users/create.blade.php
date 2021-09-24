@@ -41,7 +41,7 @@
 
                             <div class="mb-3 space-y-2 w-full text-xs">
                                 <label class=" font-semibold text-gray-600 py-2">PROFILE PHOTO</label>
-                                <div class="flex rounded-lg border-dashed border-2 border-gray-400 py-12 flex flex-col justify-center items-center">
+                                <div class="flex bg-white rounded-lg border-dashed border-2 border-gray-400 py-12 flex flex-col justify-center items-center">
                                     <input type="file" src="{{ asset('uploadimage.png') }}" name="profile_photo_path" placeholder="Choose image" id="image">
                                         @error('image')
                                         <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
@@ -80,18 +80,60 @@
                                     </div>
                                 </div>
                             </div>
-                                {{-- <div class="md:flex flex-row md:space-x-4 w-full text-xs">
-                                    <div class="w-full flex flex-col mb-3">
-                                        <label class="font-semibold text-gray-600 py-2">ADDRESS<abbr title="required"></abbr></label>
-                                        <input placeholder="Address" class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg h-10 px-4" required="required" type="text" name="address" id="address">
+                            {{-- <div>
+                                <label class="font-bold text-gray-700 py-2">ADDRESS</label>
+                                <button type="button" class="bg-green-400 px-2 py-1 text-sm shadow-sm font-medium tracking-wider text-white rounded-full hover:shadow-lg hover:bg-green-500">+</button>
+                                <div>
+                                    <div class="md:flex flex-row md:space-x-4 w-full text-xs">
+                                        <div class="mb-3 space-y-2 w-full text-xs">
+                                            <label class="font-semibold text-gray-600 py-2">CATEGORY</label>
+                                            <select class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg h-10 px-4" name="kategori" id="kategori">
+                                                <option value="Alamat Rumah">Alamat Rumah</option>
+                                            </select>
+                                        </div>
+                                        <div class="mb-3 space-y-2 w-full text-xs">
+                                            <label class="font-semibold text-gray-600 py-2">PROVINSI</label>
+                                            <input placeholder="Provinsi" class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg h-10 px-4" required="required" type="text" name="provinsi" id="provinsi">
+                                            <p class="text-red text-xs hidden">Please fill out this field.</p>
+                                        </div>
+                                    </div>
+                                    <div class="md:flex flex-row md:space-x-4 w-full text-xs">
+                                        <div class="mb-3 space-y-2 w-full text-xs">
+                                            <label class="font-semibold text-gray-600 py-2">KOTA/KABUPATEN</label>
+                                            <input placeholder="Kota/Kabupaten" class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg h-10 px-4" required="required" type="text" name="kota_kabupaten" id="kota_kabupaten">
+                                        <p class="text-red text-xs hidden">Please fill out this field.</p>
+                                        </div>
+                                        <div class="mb-3 space-y-2 w-full text-xs">
+                                            <label class="font-semibold text-gray-600 py-2">KELURAHAN</label>
+                                            <input placeholder="Kelurahan" class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg h-10 px-4" required="required" type="text" name="kelurahan" id="kelurahan">
+                                            <p class="text-red text-xs hidden">Please fill out this field.</p>
+                                        </div>
+                                        <div class="mb-3 space-y-2 w-full text-xs">
+                                            <label class="font-semibold text-gray-600 py-2">KECAMATAN</label>
+                                            <input placeholder="Kecamatan" class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg h-10 px-4" required="required" type="text" name="kecamatan" id="kecamatan">
+                                            <p class="text-red text-xs hidden">Please fill out this field.</p>
+                                        </div>
+                                    </div>
+                                    <div class="mb-3 space-y-2 w-full text-xs">
+                                        <label class="font-semibold text-gray-600 py-2">ADDRESS DETAIL<abbr title="required"></abbr></label>
+                                        <textarea placeholder="Address Detail" rows="5" class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg px-4" required="required" type="text" name="detail_alamat" id="detail_alamat"></textarea>
                                         <p class="text-red text-xs hidden">Please fill out this field.</p>
                                     </div>
-                                </div> --}}
-                                    <div class="mt-5 text-right md:space-x-3 md:block flex flex-col-reverse">
-                                        <button type="submit" class="mb-2 md:mb-0 bg-green-400 px-5 py-2 text-sm shadow-sm font-medium tracking-wider text-white rounded-full hover:shadow-lg hover:bg-green-500">Save User</button>
-                                    </div>
                                 </div>
-                            </form>
+                            </div> --}}
+                        </div>
+                        {{-- <div class="md:flex flex-row md:space-x-4 w-full text-xs">
+                            <div class="w-full flex flex-col mb-3">
+                                <label class="font-semibold text-gray-600 py-2">ADDRESS<abbr title="required"></abbr></label>
+                                <input placeholder="Address" class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg h-10 px-4" required="required" type="text" name="address" id="address">
+                                <p class="text-red text-xs hidden">Please fill out this field.</p>
+                            </div>
+                        </div> --}}
+                        <div class="mt-5 text-right md:space-x-3 md:block flex flex-col-reverse">
+                                    <button type="submit" class="mb-2 md:mb-0 bg-green-400 px-5 py-2 text-sm shadow-sm font-medium tracking-wider text-white rounded-full hover:shadow-lg hover:bg-green-500">Save User</button>
+                                </div>
+                            </div>
+                        </form>
                         </div>
                     </div>
                 </div>

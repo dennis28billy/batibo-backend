@@ -5,8 +5,8 @@
         </h2>
     </x-slot>
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+    <div>
+        <div class="max-w-7xl mx-auto">
             <div class="mb-10">
                 <a href="{{ route('users.create') }}" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
                 + Create User
@@ -46,8 +46,11 @@
                                 <td class="border px-6 py-4">{{ $item->phone_number }}</td>
                                 <td class="border px-6 py-4">{{ $item->roles }}</td>
                                 <td class="border px-6 py-4 text-center">
-                                    <a href="{{ route('users.edit', $item->id) }}" class="inline-block bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 mx-2 rounded"> 
+                                    <a href="{{ route('users.show', $item->id) }}" class="inline-block bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 mx-2 rounded"> 
                                         Detail
+                                    </a>
+                                    <a href="{{ route('users.edit', $item->id) }}" class="inline-block bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 mx-2 rounded"> 
+                                        Edit
                                     </a>
                                     <form action="{{ route('users.destroy', $item->id) }}" method="POST" class="inline-block">
                                         {!! method_field('delete') . csrf_field() !!}

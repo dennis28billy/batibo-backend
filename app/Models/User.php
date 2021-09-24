@@ -60,6 +60,14 @@ class User extends Authenticatable
         'profile_photo_url',
     ];
 
+    public function address(){
+        return $this->hasMany(Address::class, 'user_id');
+    }
+
+    public function cart(){
+        return $this->hasMany(Carts::class, 'user_id');
+    }
+
     public function getCreatedAtAttribute($value){
         return Carbon::parse($value)->timestamp;
     }

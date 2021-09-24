@@ -44,12 +44,12 @@
                     <div class="mb-3 space-y-2 w-full text-xs">
                         <label class=" font-semibold text-gray-600 py-2">PROFILE PHOTO</label>
                         <div class="flex rounded-lg border-dashed border border-gray-700 py-12 flex flex-col justify-center items-center bg-white">
-                            <input type="file" value="{{ old('profile_photo_path') ?? $item->profile_photo_path }}" name="profile_photo_path" placeholder="Choose image" id="image">
+                            <input type="file" value="{{ $item->profile_photo_path }}" name="profile_photo_path" placeholder="Choose image" id="image">
                                 @error('image')
                                 <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                                 @enderror
                             <div class="col-md-12 mb-2">
-                                <img id="preview-image-before-upload" src="{{ old('profile_photo_path') ?? $item->profile_photo_path }}"
+                                <img id="preview-image-before-upload" src="{{ $item->profile_photo_path }}"
                                     alt="preview image" style="max-height: 250px;">
                             </div>
                         </div>
@@ -59,11 +59,11 @@
                         <div class="md:flex md:flex-row md:space-x-4 w-full text-xs">
                             <div class="w-full flex flex-col mb-3">
                                 <label class="font-semibold text-gray-600 py-2">PASSWORD</label>
-                                <input value="{{ old('password') }}" type="password" name="password" id="password" placeholder="Password" class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg h-10 px-4" >
+                                <input value="{{ $item->password }}" type="text" name="password" id="password" placeholder="Password" class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg h-10 px-4" >
                             </div>
                             <div class="w-full flex flex-col mb-3">
                                 <label class="font-semibold text-gray-600 py-2">PASSWORD CONFIRMATION</label>
-                                <input value="{{ old('password_confirmation') }}" type="password" name="password_confirmation" id="password_confirmation" placeholder="Password Confirmation" class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg h-10 px-4">
+                                <input value="{{ old('password_confirmation') }}" type="text" name="password_confirmation" id="password_confirmation" placeholder="Password Confirmation" class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg h-10 px-4">
                             </div>
                             
                         </div>
@@ -83,9 +83,8 @@
                             </div>
                         </div>
                     </div>
-
                     
-                    <div class="flex flex-wrap -mx-3 mb-6">
+                    <div class="flex flex-wrap -mx-3 mb-6 mt-6">
                         <div class="w-full px-3 text-right">
                             <button type="submit" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
                                 Update User
