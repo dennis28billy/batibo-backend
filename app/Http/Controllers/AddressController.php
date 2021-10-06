@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\AddressRequest;
 use Illuminate\Http\Request;
 use App\Models\Address;
+use App\Models\User;
 
 class AddressController extends Controller
 {
@@ -22,9 +24,12 @@ class AddressController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(User $user)
     {
-        //
+        dd($user);
+        return view('addresses.create', [
+            'user' => $user
+        ]);
     }
 
     /**
@@ -33,9 +38,16 @@ class AddressController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        //
+    public function store(AddressRequest $request)
+    {  
+        dd($request);
+        $data = $request->all();
+
+        $data['profile_photo_path'] = $request->file('profile_photo_path')->store('assets/user', 'public');
+
+        User::create($data);
+
+        return redirect()->route('users.index');
     }
 
     /**
@@ -55,9 +67,11 @@ class AddressController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Address $address)
     {
-        //
+        return view('addresses.edit', [
+            'item' => $address
+        ]);
     }
 
     /**
@@ -67,9 +81,13 @@ class AddressController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(AddressRequest $request, Address $address)
     {
-        //
+        $data = $request->all();
+
+        $address->update($data);
+
+        return redirect()->route('users.index');
     }
 
     /**
@@ -78,8 +96,10 @@ class AddressController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Address $address)
     {
-        //
+        $address->delete();
+        
+        return redirect()->route('users.index');
     }
 }

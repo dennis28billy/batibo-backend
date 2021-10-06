@@ -87,4 +87,13 @@ class AddressController extends Controller
         return ResponseFormatter::success($address, 'Address Updated');
     }
 
+    public function deleteAddress($id)
+    {
+
+        $address = Address::findOrFail($id);
+        $address->delete();
+
+        return ResponseFormatter::success($address, 'Address Deleted');
+    }
+
 }

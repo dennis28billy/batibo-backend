@@ -58,7 +58,15 @@
                         </div>
                     </div>
 
-                    <div class="my-5">
+                    <div class="flex flex-wrap -mx-3 mt-6">
+                        <div class="w-full px-3 text-left">
+                            <a href="{{ route('addresses.create', $item) }}" class="inline-block bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"> 
+                                Create Address
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="mb-5">
                         <label class="font-semibold text-gray-600 py-2 text-xs mb-3">ADDRESS</label>
                         <table class="bg-white border-gray-700 rounded-lg table-auto w-full">
                             <thead>
@@ -83,10 +91,10 @@
                                 <td class="border px-6 py-4">{{ $addr->kelurahan }}</td>
                                 <td class="border px-6 py-4">{{ $addr->kecamatan }}</td>
                                 <td class="border px-6 py-4 text-center">
-                                    <a href="{{ route('products.edit', $addr->id) }}" class="inline-block bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 mx-2 rounded"> 
+                                    <a href="{{ route('addresses.edit', $addr->id) }}" class="inline-block bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 mx-2 rounded"> 
                                             Edit
                                         </a>
-                                        <form action="{{ route('products.destroy', $addr->id) }}" method="POST" class="inline-block">
+                                        <form action="{{ route('addresses.destroy', $addr->id) }}" method="POST" class="inline-block">
                                             {!! method_field('delete') . csrf_field() !!}
                                             <button type="submit" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 mx-2 rounded ">
                                                 Delete

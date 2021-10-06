@@ -87,4 +87,13 @@ class CartController extends Controller
 
         return ResponseFormatter::success($cart, 'Cart Updated');
     }
+
+    public function deleteCart($id)
+    {
+
+        $cart = Carts::findOrFail($id);
+        $cart->delete();
+
+        return ResponseFormatter::success($cart, 'Cart Deleted');
+    }
 }
