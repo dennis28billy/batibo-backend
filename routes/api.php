@@ -41,6 +41,7 @@ Route::middleware('auth:sanctum')->group(function(){
 
     Route::get('transaction', [TransactionController::class, 'all']);
     Route::post('transaction/{id}', [TransactionController::class, 'update']);
+    Route::post('transaction/{id}/delete', [TransactionController::class, 'delete']);
 
     Route::get('order', [OrderController::class, 'all']);
     Route::post('order/add', [OrderController::class, 'addOrder']);

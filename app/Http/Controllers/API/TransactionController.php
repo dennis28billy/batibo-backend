@@ -66,6 +66,15 @@ class TransactionController extends Controller
         return ResponseFormatter::success($transaction, 'Transaksi berhasil diperbarui');
     }
 
+    public function delete($id)
+    {
+        $transaction = transaction::findOrFail($id);
+
+        $transaction->delete();
+
+        return ResponseFormatter::success($transaction, 'Transaksi berhasil dihapus');
+    }
+
     public function checkout(Request $request){
         $request->validate([
             'user_id' => 'required|exists:users,id',
