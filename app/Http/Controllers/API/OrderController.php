@@ -20,7 +20,7 @@ class OrderController extends Controller
 
         if($id)
         {
-            $order = Order::with(['product', 'transaction'])->find($id);
+            $order = Order::with(['transaction'])->find($id);
 
             if($order){
                 return ResponseFormatter::success(
@@ -37,7 +37,7 @@ class OrderController extends Controller
             }
         }
 
-        $order = Order::with(['product','transaction'])->where('transaction_id', Auth::user()->id);
+        $order = Order::with(['product','transaction'])->where('user_id', Auth::user()->id);
 
 
 
