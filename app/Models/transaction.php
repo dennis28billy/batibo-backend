@@ -12,7 +12,7 @@ class transaction extends Model
     use HasFactory, SoftDeletes;
 
     protected $fillable = [
-        'user_id', 'total', 'status', 'payment_url'
+        'user_id', 'total', 'status', 'payment_url', 'isOrder'
     ];
 
     public function order(){
