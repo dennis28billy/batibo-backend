@@ -21,7 +21,7 @@ class TransactionController extends Controller
 
         if($id)
         {
-            $transaction = transaction::with(['cart', 'user'])->find($id);
+            $transaction = transaction::with(['user'])->find($id);
 
             if($transaction){
                 return ResponseFormatter::success(
@@ -38,7 +38,7 @@ class TransactionController extends Controller
             }
         }
 
-        $transaction = transaction::with(['cart', 'user'])->where('user_id', Auth::user()->id);
+        $transaction = transaction::with(['user'])->where('user_id', Auth::user()->id);
 
         // if($cart_id)
         // {
