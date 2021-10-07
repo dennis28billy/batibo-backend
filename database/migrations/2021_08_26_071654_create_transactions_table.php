@@ -17,9 +17,9 @@ class CreateTransactionsTable extends Migration
             $table->id();
 
             $table->integer('user_id');
-            $table->integer('cart_id');
             $table->integer('total');
             $table->string('status');
+            $table->string('isPayment');
             $table->text('payment_url');
         
             $table->softDeletes();
