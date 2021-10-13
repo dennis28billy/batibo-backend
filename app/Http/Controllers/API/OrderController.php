@@ -14,7 +14,6 @@ class OrderController extends Controller
     public function all(Request $request)
     {   
         $id = $request->input('id');
-        $limit = $request->input('limit', 10);
         $product_id = $request->input('product_id');
         $transaction_id = $request->input('transaction_id');
 
@@ -52,7 +51,7 @@ class OrderController extends Controller
         }
 
         return ResponseFormatter::success(
-            $order->paginate($limit),
+            $order,
             'Data list order berhasil diambil'
         );
     }
