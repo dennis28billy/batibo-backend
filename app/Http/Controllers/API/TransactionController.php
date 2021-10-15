@@ -38,7 +38,7 @@ class TransactionController extends Controller
             }
         }
 
-        $transaction = transaction::with(['user'])->where('user_id', Auth::user()->id);
+        $transaction = transaction::with(['user', 'address'])->where('user_id', Auth::user()->id);
 
         // if($cart_id)
         // {
@@ -78,12 +78,14 @@ class TransactionController extends Controller
     public function checkout(Request $request){
         $request->validate([
             'user_id' => 'required|exists:users,id',
+            'address_id' => 'required|exists:address,id',
             'total' => 'required',
             'status' => 'required',
         ]);
 
         $transaction = transaction::create([
             'user_id' => $request->user_id,
+            'address_id' => $request->address_id,
             'total' => $request->total,
             'status' => $request->status,
             'payment_url' => '',
@@ -97,7 +99,7 @@ class TransactionController extends Controller
         Config::$is3ds = config('services.midtrans.is3ds');
 
         // Panggil transaksi yang dibuat
-        $transaction = transaction::with(['user'])->find($transaction->id);
+        $transaction = transaction::with(['user','address'])->find($transaction->id);
 
         // Membuat transaksi midtrans
         $midtrans = [

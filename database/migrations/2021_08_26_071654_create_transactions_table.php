@@ -17,6 +17,7 @@ class CreateTransactionsTable extends Migration
             $table->id();
 
             $table->integer('user_id');
+            $table->integer('address_id');
             $table->integer('total');
             $table->string('status');
             $table->string('isOrder');

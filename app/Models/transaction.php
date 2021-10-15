@@ -12,7 +12,7 @@ class transaction extends Model
     use HasFactory, SoftDeletes;
 
     protected $fillable = [
-        'user_id', 'total', 'status', 'payment_url', 'isOrder'
+        'user_id', 'address_id', 'total', 'status', 'payment_url', 'isOrder'
     ];
 
     public function order(){
@@ -21,6 +21,10 @@ class transaction extends Model
 
     public function user(){
         return $this->hasOne(User::class, 'id', 'user_id');
+    }
+
+    public function address(){
+        return $this->hasOne(Address::class, 'id', 'address_id');
     }
 
     public function getCreatedAtAttribute($value){
