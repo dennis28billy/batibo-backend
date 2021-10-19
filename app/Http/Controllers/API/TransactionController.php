@@ -15,7 +15,7 @@ class TransactionController extends Controller
     public function all(Request $request)
     {
         $id = $request->input('id');
-        $limit = $request->input('limit', 10);
+        $limit = $request->input('limit', 10000);
         $isOrder = $request->input('limit');
         $status = $request->input('status');
 
@@ -81,9 +81,11 @@ class TransactionController extends Controller
             'address_id' => 'required',
             'total' => 'required',
             'status' => 'required',
+            'uid' => 'required'
         ]);
 
         $transaction = transaction::create([
+            'uid' => 'GD - '.$request->uid.$request->user_id,
             'user_id' => $request->user_id,
             'address_id' => $request->address_id,
             'total' => $request->total,
