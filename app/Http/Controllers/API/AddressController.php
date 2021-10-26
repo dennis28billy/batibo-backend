@@ -47,6 +47,9 @@ class AddressController extends Controller
         try{
             $request->validate([
                 'user_id' => 'required|exists:users,id',
+                'nama_penerima' => 'required',
+                'nomor_handphone' => 'required',
+                'email' => 'required',
                 'kategori' => 'required',
                 'provinsi' => 'required',
                 'kota_kabupaten' => 'required',
@@ -58,6 +61,9 @@ class AddressController extends Controller
 
             $address = Address::create([
                 'user_id' => $request->user_id,
+                'nama_penerima' => $request->nama_penerima,
+                'nomor_handphone' => $request->nomor_handphone,
+                'email' => $request->email,
                 'kategori' => $request->kategori,
                 'provinsi' => $request->provinsi,
                 'kota_kabupaten' => $request->kota_kabupaten,

@@ -17,6 +17,9 @@ class CreateAddressesTable extends Migration
             $table->id();
 
             $table->integer('user_id');
+            $table->string('nama_penerima');
+            $table->string('nomor_handphone');
+            $table->string('email');
             $table->string('kategori');
             $table->string('provinsi');
             $table->string('kota_kabupaten');
