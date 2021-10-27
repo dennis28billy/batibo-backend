@@ -74,6 +74,7 @@
                 <table class="min-w-full">
                     <thead>
                         <tr>
+                            <th class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Timestamp</th>
                             <th id="name" class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Name</th>
                             <th class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Payment URL</th>
                             <th class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Status</th>
@@ -86,18 +87,16 @@
                     <tbody class="bg-white">
                         @foreach ($transactions as $item)
                           <tr>
-                              <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                <div class="flex items-center">
-                                    {{-- <div class="flex-shrink-0 h-10 w-10">
-                                        <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" />
-                                    </div> --}}
 
-                                    <div class="ml-4">
+                            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 text-sm leading-5 text-gray-900">{{  date(("H:i:s d-m-Y"), $item->created_at) }}</td>
+
+                            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
                                         <div class="text-sm leading-5 font-medium text-gray-900">{{ $item->user->name }}</div>
-                                        {{-- <div class="text-sm leading-5 text-gray-500">{{ $item->email }}</div> --}}
                                     </div>
                                 </div>
                             </td>
+
+                            
                             
                             <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
                                 <a href="{{ $item->payment_url }}" class="text-sm leading-5 text-gray-900">{{ $item->payment_url }}</a>

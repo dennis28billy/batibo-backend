@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\AddressRequest;
+use App\Http\Requests\UserRequest;
 use Illuminate\Http\Request;
 use App\Models\Address;
 use App\Models\User;
@@ -16,7 +17,8 @@ class AddressController extends Controller
      */
     public function index()
     {
-        //
+        $address = Address::latest()->with(['user']);
+
     }
 
     /**
@@ -24,11 +26,11 @@ class AddressController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(User $user)
+    public function create(User $user, Address $address)
     {
-        dd($user);
+        dd($address);
         return view('addresses.create', [
-            'user' => $user
+            'address' => $address
         ]);
     }
 
