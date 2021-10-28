@@ -45,21 +45,31 @@
                                 <div class="text-sm">Phone Number</div>
                                 <div class="text-xl font-bold">{{ $item->user->phone_number }}</div>
                             </div>
-                            {{-- <div class="w-1/6">
-                                <div class="text-sm">Address</div>
-                                <div class="text-xl font-bold">{{ $item->user->address }}</div>
-                            </div> --}}
                         </div>
+
+                        <div class="flex flex-wrap mb-3">
+                            <div class="w-2/6">
+                                <div class="text-sm">Receiver Name</div>
+                                <div class="text-xl font-bold">{{ $item->address->nama_penerima }}</div>
+                            </div>
+                            <div class="w-2/6">
+                                <div class="text-sm">Receiver Email</div>
+                                <div class="text-xl font-bold">{{ $item->address->email }}</div>
+                            </div>
+                            <div class="w-1/6">
+                                <div class="text-sm">Receiver Phone Number</div>
+                                <div class="text-xl font-bold">{{ $item->address->nomor_handphone }}</div>
+                            </div>
+                        </div>
+
                         <div class="flex flex-wrap mb-3">
                             <div class="w-3/6">
                                 <div class="text-sm">Address</div>
-                                <div class="text-xl font-bold">{{ $item->user->address }}</div>
+                                <div class="text-xl font-bold">{{ $item->address->kelurahan }}, {{ $item->address->kecamatan }}, {{ $item->address->kota_kabupaten }}, {{ $item->address->provinsi }}</div>
+                                <div class="text-xl font-semibold">{{ $item->address->detail_alamat }}</div>
                             </div>
-                            {{-- <div class="w-1/6">
-                                <div class="text-sm">Address</div>
-                                <div class="text-xl font-bold">{{ $item->user->address }}</div>
-                            </div> --}}
                         </div>
+
                         <div class="flex flex-wrap mb-3">
                             <div class="w-5/6">
                                 <div class="text-sm">Payment URL</div>
@@ -67,6 +77,7 @@
                                     <a href="{{ $item->payment_url }}">{{ $item->payment_url }}</a>
                                 </div>
                             </div>
+                           @if($item->status == 'SUCCESS' || $item->status == 'ON_DELIVERY')
                             <div class="w-1/6">
                                 <div class="text-sm mb-1">Change Status</div>
                                 <a href="{{ route('transactions.changeStatus', ['id' => $item->id, 'status' => 'ON_DELIVERY' ]) }}"
@@ -82,6 +93,9 @@
                                 Cancelled
                                 </a>
                             </div>
+                            @else
+                                <div></div>
+                            @endif
                         </div>
                     </div>
                 </div>
