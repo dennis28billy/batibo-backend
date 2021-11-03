@@ -40,10 +40,10 @@ class TransactionController extends Controller
 
         $transaction = transaction::with(['user', 'address'])->where('user_id', Auth::user()->id);
 
-        // if($cart_id)
-        // {
-        //     $transaction->where('cart_id', $cart_id);
-        // }
+         if($isOrder)
+         {
+             $transaction->where('isOrder', $isOrder);
+         }
 
         if($status)
         {
