@@ -8,7 +8,7 @@
     <div class="flex-1 flex flex-col overflow-hidden">
     <div class="mt-4">
         <div class="flex flex-wrap -mx-6">
-            <div class="w-full px-6 sm:w-1/2 xl:w-1/3">
+            <div class="w-full mt-6 px-6 sm:w-1/2 xl:w-1/3 sm:mt-0">
                 <div class="flex items-center px-5 py-6 shadow-sm rounded-md bg-white">
                     <div class="p-3 rounded-full bg-indigo-600 bg-opacity-75">
                         <svg class="h-8 w-8 text-white" viewBox="0 0 28 30" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -45,7 +45,7 @@
                 </div>
             </div>
 
-            <div class="w-full mt-6 px-6 sm:w-1/2 xl:w-1/3 xl:mt-0">
+            <div class="w-full mt-6 px-6 sm:w-1/2 xl:w-1/3 sm:mt-0">
                 <div class="flex items-center px-5 py-6 shadow-sm rounded-md bg-white">
                     <div class="p-3 rounded-full bg-pink-600 bg-opacity-75">
                         <svg class="h-8 w-8 text-white" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -79,7 +79,6 @@
                             <th class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Payment URL</th>
                             <th class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Status</th>
                             <th class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Total</th>
-                            {{-- <th class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Created At</th> --}}
                             <th class="px-6 py-3 border-b border-gray-200 bg-gray-50"></th>
                         </tr>
                     </thead>
@@ -87,18 +86,14 @@
                     <tbody class="bg-white">
                         @foreach ($transactions as $item)
                           <tr>
-
                             <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 text-sm leading-5 text-gray-900">{{  date(("H:i:s d-m-Y"), $item->created_at) }}</td>
 
                             <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
                                 <div class="text-sm leading-5 font-medium text-gray-900">{{ $item->user->name }}</div>
                             </td>
 
-                            
-                            
                             <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
                                 <a href="{{ $item->payment_url }}" class="text-sm leading-5 text-gray-900">{{ $item->payment_url }}</a>
-                                {{-- <div class="text-sm leading-5 text-gray-500">Web dev</div> --}}
                             </td>
 
                             <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
@@ -106,13 +101,11 @@
                             </td>
 
                             <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 text-sm leading-5 text-gray-500">{{ $item->total }}</td>
-                            {{-- <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 text-sm leading-5 text-gray-500">{{ $item->created_at }}</td> --}}
 
                             <td class="px-6 py-4 whitespace-no-wrap text-right border-b border-gray-200 text-sm leading-5 font-medium">
                                 <a href="{{ route('transactions.show', $item->id) }}" class="text-indigo-600 hover:text-indigo-900">Edit</a>
                             </td>
                         </tr>
-                        
                         @endforeach
                     </tbody>
                 </table>
@@ -120,7 +113,5 @@
         </div>
     </div>
 </div>
-</div>
-    </div>
 
 </x-app-layout>
