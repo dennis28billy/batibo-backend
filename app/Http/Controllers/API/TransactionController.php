@@ -91,7 +91,7 @@ class TransactionController extends Controller
             'total' => $request->total,
             'status' => $request->status,
             'payment_url' => '',
-            'isOrder' => 'false'
+            'isOrder' => $request->isOrder,
         ]);
 
         // Konfigurasi midtrans
