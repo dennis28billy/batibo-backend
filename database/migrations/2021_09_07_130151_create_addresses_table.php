@@ -26,6 +26,8 @@ class CreateAddressesTable extends Migration
             $table->string('kelurahan');
             $table->string('kecamatan');
             $table->string('detail_alamat');
+            $table->decimal('latitude');
+            $table->decimal('longitude');
 
             $table->softDeletes();
             $table->timestamps();
