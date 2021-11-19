@@ -13,7 +13,7 @@ class Address extends Model
 
     protected $fillable = [
         'user_id', 'nama_penerima', 'nomor_handphone', 'email', 'kategori', 'provinsi', 'kota_kabupaten', 'kelurahan', 'kecamatan',
-        'detail_alamat'
+        'detail_alamat', 'latitude', 'longitude'
     ];
 
 
