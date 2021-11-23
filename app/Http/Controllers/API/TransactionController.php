@@ -81,7 +81,12 @@ class TransactionController extends Controller
             'address_id' => 'required',
             'total' => 'required',
             'status' => 'required',
-            'uid' => 'required'
+            'uid' => 'required',
+            'nama_penerima' => 'required',
+            'nomor_handphone' => 'required',
+            'email' => 'required',
+            'latitude' => 'required',
+            'longitude' => 'required'
         ]);
 
         $transaction = transaction::create([
@@ -92,6 +97,11 @@ class TransactionController extends Controller
             'status' => $request->status,
             'payment_url' => '',
             'isOrder' => $request->isOrder,
+            'nama_penerima' => $request->nama_penerima,
+            'nomor_handphone' => $request->nomor_handphone,
+            'email' => $request->email,
+            'latitude' => $request->latitude,
+            'longitude' => $request->longitude 
         ]);
 
         // Konfigurasi midtrans
