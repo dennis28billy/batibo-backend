@@ -55,7 +55,9 @@ class AddressController extends Controller
                 'kota_kabupaten' => 'required',
                 'kelurahan' => 'required',
                 'kecamatan' => 'required',
-                'detail_alamat' => 'required'
+                'detail_alamat' => 'required',
+                'latitude' => 'required',
+                'longitude' => 'required'
             ]);
             
 
@@ -69,7 +71,9 @@ class AddressController extends Controller
                 'kota_kabupaten' => $request->kota_kabupaten,
                 'kelurahan' => $request->kelurahan,
                 'kecamatan' => $request->kecamatan,
-                'detail_alamat' => $request->detail_alamat
+                'detail_alamat' => $request->detail_alamat,
+                'latitude' => $request->latitude,
+                'longitude' => $request->longitude
             ]);
 
             $address = Address::with(['user'])->find($address->id);
