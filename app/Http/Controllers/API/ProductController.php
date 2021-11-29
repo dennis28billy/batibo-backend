@@ -47,7 +47,7 @@ class ProductController extends Controller
 
         if($category)
         {
-            $product->where('name','like','%'. $category . '%');
+            $product->where('category','like','%'. $category . '%');
         }
 
         if($price_from)

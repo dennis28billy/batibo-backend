@@ -63,7 +63,7 @@ class OrderController extends Controller
             $request->validate([
                 'user_id' => 'required|exists:users,id',
                 'product_id' => 'required|exists:products,id',
-                'transaction_id' => 'required|exists:transactions,id',
+                'transaction_id' => 'required',
                 'quantity' => 'required',
             ]);
             

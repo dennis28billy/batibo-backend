@@ -1,4 +1,4 @@
-<?php
+	<?php
 
 namespace App\Models;
 
@@ -7,31 +7,33 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Order extends Model
+class transaction extends Model
 {
     use HasFactory, SoftDeletes;
 
     protected $fillable = [
-        'user_id', 'transaction_id', 'product_id', 'quantity', 'total'
+        'uid', 'user_id', 'address_id',  'total', 'status', 'payment_url', 'isOrder'
     ];
 
-    public function transaction(){
-        return $this->hasOne(transaction::class, 'id', 'transaction_id');
-    }
-
-    public function product(){
-        return $this->hasOne(products::class, 'id', 'product_id');
+    public function order(){
+        return $this->hasMany(Order::class, 'transaction_id');
     }
 
     public function user(){
         return $this->hasOne(User::class, 'id', 'user_id');
     }
 
+    public function address(){
+        return $this->hasOne(Address::class, 'id', 'address_id');
+    }
+
     public function getCreatedAtAttribute($value){
         return Carbon::parse($value)->timestamp;
     }
-
+    
     public function getUpdatedAtAttribute($value){
         return Carbon::parse($value)->timestamp;
     }
+
+
 }

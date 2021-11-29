@@ -45,7 +45,7 @@
                             <tr>
                                 <td class="border px-6 py-4">{{ $item->id }}</td>
                                 <td style="text-align: center" class="border py-0 object-fill">
-                                    <img src="{{ $item->picturePath }}" alt="img: {{ $item->name }}" class="inline-block object-scale-down h-1/2 w-1/2"/>
+                                    <img src="{{ $item->picturePath }}" alt="img: {{ $item->name }}" class="inline-block object-contain h-48 w-48"/>
                                 </td>
                                 <td class="border px-6 py-4">{{ $item->name }}</td>
                                 {{-- <td class="border px-6 py-4">{{ $item->detail }}</td> --}}

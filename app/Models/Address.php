@@ -12,8 +12,8 @@ class Address extends Model
     use HasFactory, SoftDeletes;
 
     protected $fillable = [
-        'user_id', 'nama_penerima', 'nomor_handphone', 'email', 'kategori', 'provinsi', 'kota_kabupaten', 'kelurahan', 'kecamatan',
-        'detail_alamat', 'latitude', 'longitude'
+        'user_id', 'kategori', 'provinsi', 'kota_kabupaten', 'kelurahan', 'kecamatan', 'detail_alamat',
+	'nama_penerima', 'nomor_handphone', 'email', 'latitude', 'longitude'
     ];
 
 

@@ -27,8 +27,7 @@ class UserRequest extends FormRequest
     {
         return [
             'name' => ['required', 'string', 'max:255'],
-            'profile_photo_patb' => 'image',
-            'email' => ['string', 'email', 'max:255', 'unique:users'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => $this->passwordRules(),
             'roles' => ['required','string', 'max:255', 'in:USER,ADMIN'],
             'phone_number' => ['required', 'string', 'max:255']

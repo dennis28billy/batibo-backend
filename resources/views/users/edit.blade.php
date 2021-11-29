@@ -34,11 +34,11 @@
                             <input value="{{ old('name') ?? $item->name }}" placeholder="User Name" class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg h-10 px-4" required="required" type="text" name="name" id="name">
                             <p class="text-red text-xs hidden">Please fill out this field.</p>
                         </div>
-                        {{-- <div class="mb-3 space-y-2 w-full text-xs">
+                        <div class="mb-3 space-y-2 w-full text-xs">
                             <label class="font-semibold text-gray-600 py-2">EMAIL<abbr title="required"></abbr></label>
                             <input value="{{ old('email') ?? $item->email }}" placeholder="Email" class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg h-10 px-4" required="required" type="text" name="email" id="email">
                             <p class="text-red text-xs hidden">Please fill out this field.</p>
-                        </div> --}}
+                        </div>
                     </div>
 
                     <div class="mb-3 space-y-2 w-full text-xs">
@@ -69,7 +69,7 @@
                         </div>
                         <div class="md:flex flex-row md:space-x-4 w-full text-xs">
                             <div class="w-full flex flex-col mb-3">
-                                <label class="font-semibold text-gray-600 py-2">PHONE NUMBER</label>
+                                <label class="font-semibold text-gray-600 py-2">PHONE NUMBER<abbr title="required"></abbr></label>
                                 <input value="{{ old('phone_number') ?? $item->phone_number }}" placeholder="Phone Number" class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg h-10 px-4" required="required" type="number" name="phone_number" id="phone_number">
                                 <p class="text-red text-xs hidden">Please fill out this field.</p>
                             </div>

@@ -15,10 +15,9 @@ class TransactionController extends Controller
     public function all(Request $request)
     {
         $id = $request->input('id');
-        $limit = $request->input('limit', 10000);
-        $isOrder = $request->input('isOrder');
+        $limit = $request->input('limit', 6);
+        // $cart_id = $request->input('cart_id');
         $status = $request->input('status');
-
 
         if($id)
         {
@@ -39,12 +38,12 @@ class TransactionController extends Controller
             }
         }
 
-        $transaction = transaction::with(['user', 'address'])->where('user_id', Auth::user()->id);
+        $transaction = transaction::with(['user'])->where('user_id', Auth::user()->id);
 
-        if($isOrder)
-   	{
-             $transaction->where('isOrder', $isOrder);
-        }
+        // if($cart_id)
+        // {
+        //     $transaction->where('cart_id', $cart_id);
+        // }
 
         if($status)
         {
@@ -79,32 +78,17 @@ class TransactionController extends Controller
     public function checkout(Request $request){
         $request->validate([
             'user_id' => 'required|exists:users,id',
-            'address_id' => 'required',
             'total' => 'required',
-            'status' => 'required',
-	    'uid' => 'required',
-	    'nama_penerima' => 'required',
-	    'nomor_handphone' => 'required',
-	    'email' => 'required',
-	    'alamat_penerima' => 'required',
-	    'latitude' => 'required',
-	    'longitude' => 'required'
+            'status'
+ => 'required',
         ]);
 
         $transaction = transaction::create([
-	    'uid' => 'GD - '.$request->uid.$request->user_id,
             'user_id' => $request->user_id,
-            'address_id' => $request->address_id,
             'total' => $request->total,
             'status' => $request->status,
             'payment_url' => '',
-            'isOrder' => $request->isOrder,
-	    'nama_penerima' => $request->nama_penerima,
-	    'nomor_handphone' => $request->nomor_handphone,
-	    'email' => $request->email,
-	    'alamat_penerima' => $request->alamat_penerima,
-	    'latitude' => $request->latitude,
-	    'longitude' => $request->longitude
+            'isOrder' => '',
         ]);
 
         // Konfigurasi midtrans
@@ -114,7 +98,7 @@ class TransactionController extends Controller
         Config::$is3ds = config('services.midtrans.is3ds');
 
         // Panggil transaksi yang dibuat
-        $transaction = transaction::with(['user', 'address'])->find($transaction->id);
+        $transaction = transaction::with(['user'])->find($transaction->id);
 
         // Membuat transaksi midtrans
         $midtrans = [
@@ -125,7 +109,6 @@ class TransactionController extends Controller
             'customer_details' => [
                 'first_name' => $transaction->user->name,
                 'email' => $transaction->user->email,
-
             ],
             'enabled_payments' => ['gopay', 'bank_transfer'],
             'vtweb' => []
