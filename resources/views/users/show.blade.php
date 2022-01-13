@@ -57,7 +57,7 @@
                             </div>
                         </div>
                     </div>
-{{--
+{{-- {{--
                     <div class="flex flex-wrap -mx-3 mt-6">
                         <div class="w-full px-3 text-left">
                             <a href="{{ route('addresses.create', $item) }}" class="inline-block bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"> 
@@ -65,7 +65,7 @@
                             </a>
                         </div>
                     </div>
---}
+--} --}}
                     <div class="mb-5">
                         <label class="font-semibold text-gray-600 py-2 text-xs mb-3">ADDRESS</label>
                         <table class="bg-white border-gray-700 rounded-lg table-auto w-full">
