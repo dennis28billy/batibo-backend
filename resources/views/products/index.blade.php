@@ -37,6 +37,7 @@
                             <th class="border px-6 py-4">Price</th>
                             <th class="border px-6 py-4">Discount</th>
                             <th class="border px-6 py-4">Final Price</th>
+                            <th class="border px-6 py-4">Stock</th>
                             <th class="border px-6 py-4">Action</th>
                         </tr>
                     </thead>
@@ -54,6 +55,7 @@
                                 <td class="border px-6 py-4">Rp.{{ number_format($item->price) }}</td>
                                 <td class="border px-6 py-4">{{ $item->discount }}%</td>
                                 <td class="border px-6 py-4">Rp.{{ $item->price_after_discount }}</td>
+                                <td class="border px-6 py-4 text-center">{{ $item->quantity }}</td>
                                 <td class="border px-6 py-4 text-center">
                                     <a href="{{ route('products.edit', $item->id) }}" class="inline-block bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 mx-2 rounded"> 
                                         Edit

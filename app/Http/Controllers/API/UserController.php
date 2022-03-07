@@ -37,7 +37,7 @@ class UserController extends Controller
             // jika hash tidak sesuai = beri error
             $user = User::where('email', $request->email)->first();
             if(!Hash::check($request->password, $user->password, [])){
-                throw new \Exception('Invalid Credentials');
+                throw new Exception('Invalid Credentials');
             }
 
             //jika berhasil = login success

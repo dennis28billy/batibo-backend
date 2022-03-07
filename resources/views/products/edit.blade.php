@@ -37,6 +37,7 @@
                         <div class="mb-3 space-y-2 w-full text-xs">
                             <label class="font-semibold text-gray-600 py-2">CATEGORY<abbr title="required"></abbr></label>
                             <select name="category" id="category" class="block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg h-10 px-4 md:w-full">
+                                <option value="{{ old('category') ?? $item->category}}" >{{$item->category}}</option>
                                 <option value="Sayuran">Sayuran</option>
                                 <option value="Buah">Buah</option>
                                 <option value="Rempah">Rempah</option>
@@ -73,8 +74,9 @@
                         <div class="w-full flex flex-col mb-3">
                             <label class="font-semibold text-gray-600 py-2">PRODUCT UNIT<abbr title="required"></abbr></label>
                             <select class="block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg h-10 px-4 md:w-full" name="product_unit" id="product_unit">
-                                <option value="500 gr" >500 gr</option>
-                                <option value="5 kg" >5 kg</option>
+                                <option value="{{ old('product_unit') ?? $item->product_unit}}" >{{$item->product_unit}}</option>
+                                <option value="Satuan" >Satuan</option>
+                                <option value="1 kg" >1 kg</option>
                             </select>
                         </div>
                         <div class="w-full flex flex-col mb-3">
@@ -85,6 +87,11 @@
                         <div class="w-full flex flex-col mb-3">
                             <label class="font-semibold text-gray-600 py-2">DISCOUNT<abbr title="required"></abbr></label>
                             <input value="{{ old('discount') ?? $item->discount}}" placeholder="Discount" class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg h-10 px-4" required="required" type="number" name="discount" id="discount">
+                            <p class="text-red text-xs hidden">Please fill out this field.</p>
+                        </div>
+                        <div class="w-full flex flex-col mb-3">
+                            <label class="font-semibold text-gray-600 py-2">STOCK<abbr title="required"></abbr></label>
+                            <input value="{{ old('quantity') ?? $item->quantity}}" placeholder="Stock" class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg h-10 px-4" required="required" type="number" name="quantity" id="quantity">
                             <p class="text-red text-xs hidden">Please fill out this field.</p>
                         </div>
                     </div>

@@ -70,8 +70,8 @@
                         <div class="w-full flex flex-col mb-3">
                             <label class="font-semibold text-gray-600 py-2">PRODUCT UNIT<abbr title="required"></abbr></label>
                             <select class="block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg h-10 px-4 md:w-full" name="product_unit" id="product_unit">
-                                <option value="500 gr" >500 gr</option>
-                                <option value="5 kg" >5 kg</option>
+                                <option value="500 gr" >1 kg</option>
+                                <option value="5 kg" >Satuan</option>
                             </select>
                         </div>
                         <div class="w-full flex flex-col mb-3">
@@ -82,6 +82,11 @@
                         <div class="w-full flex flex-col mb-3">
                             <label class="font-semibold text-gray-600 py-2">DISCOUNT<abbr title="required"></abbr></label>
                             <input placeholder="Discount" class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg h-10 px-4" required="required" type="number" name="discount" id="discount">
+                            <p class="text-red text-xs hidden">Please fill out this field.</p>
+                        </div>
+                        <div class="w-full flex flex-col mb-3">
+                            <label class="font-semibold text-gray-600 py-2">STOCK<abbr title="required"></abbr></label>
+                            <input placeholder="Stock" class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg h-10 px-4" required="required" type="number" name="quantity" id="quantity">
                             <p class="text-red text-xs hidden">Please fill out this field.</p>
                         </div>
                     </div>

@@ -22,7 +22,7 @@ class ProductController extends Controller
         }
 
         return view('products.index',[
-            'product' => $products->paginate(5)
+            'product' => $products->paginate(25)
         ]);
     }
 
