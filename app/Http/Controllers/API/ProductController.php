@@ -66,7 +66,7 @@ class ProductController extends Controller
         );
     }
 
-    public function updateQuantity(Request $request, $id)
+    public function updateProduct(Request $request, $id)
     {
 
         $data = $request->all();

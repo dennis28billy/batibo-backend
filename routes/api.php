@@ -51,6 +51,6 @@ Route::post('login', [UserController::class, 'login']);
 Route::post('register', [UserController::class, 'register']);
 
 Route::get('product', [ProductController::class, 'all']);
-Route::post('product/{id}', [ProductController::class, 'updateQuantity']);
+Route::post('product/{id}', [ProductController::class, 'updateProduct']);
 
 Route::post('midtrans/callback', [MidtransController::class, 'callback']);
