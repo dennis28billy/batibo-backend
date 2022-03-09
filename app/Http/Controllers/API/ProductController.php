@@ -65,4 +65,17 @@ class ProductController extends Controller
             'Data list produk berhasil diambil'
         );
     }
+
+    public function updateQuantity(Request $request, $id)
+    {
+
+        $data = $request->all();
+
+        $product = products::findOrFail($id);
+        $product->update($data);
+
+        return ResponseFormatter::success($product, 'Product Updated');
+    }
+
+
 }
