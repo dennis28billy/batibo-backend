@@ -30,7 +30,8 @@ class UserRequest extends FormRequest
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => $this->passwordRules(),
             'roles' => ['required','string', 'max:255', 'in:USER,ADMIN'],
-            'phone_number' => ['required', 'string', 'max:255']
+            'phone_number' => ['required', 'string', 'max:255'],
+            'profile_photo_path' => ['required']
         ];
     }
 }

@@ -28,8 +28,8 @@
                     <div class="mb-3 space-y-2 text-xs">
                         <label class=" font-semibold text-gray-600 py-2">PROFILE PHOTO</label>
                             <div class="flex rounded-lg border border-gray-700 py-12 flex-col justify-center items-center bg-white col-md-12 mb-2">
-                                <img id="preview-image-before-upload" src="{{ $item->profile_photo_path }}"
-                                    alt="preview image" style="max-height: 250px;">
+                                <img id="inline-block object-contain h-48 w-48" src="{{ $item->profile_photo_path }}"
+                                    alt="img: {{ $item->name }}" style="max-height: 250px;">
                             </div>
                     </div>
                     
