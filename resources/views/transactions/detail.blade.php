@@ -62,6 +62,12 @@
                         </div>
 
                         <div class="flex flex-wrap mb-3">
+                            <div >
+                                <div class="text-sm">Google Map Location</div>
+                                <div class="text-xl font-bold"><a href="https://maps.google.com/?q={{ $item->latitude }},{{ $item->longitude }}" target="_blank">https://maps.google.com/?q={{ $item->latitude }},{{ $item->longitude }}</a></div>
+                            </div>
+                        </div>
+                        <div class="flex flex-wrap mb-3">
                             <div class="w-3/6">
                                 <div class="text-sm">Address</div>
                                 <div class="text-xl font-bold">{{ $item->address->kelurahan }}, {{ $item->address->kecamatan }}, {{ $item->address->kota_kabupaten }}, {{ $item->address->provinsi }}</div>

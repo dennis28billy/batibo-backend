@@ -49,9 +49,9 @@
                                     <a href="{{ route('users.show', $item->id) }}" class="inline-block bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 mx-2 rounded"> 
                                         Detail
                                     </a>
-                                    <a href="{{ route('users.edit', $item->id) }}" class="inline-block bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 mx-2 rounded"> 
+                                    {{-- <a href="{{ route('users.edit', $item->id) }}" class="inline-block bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 mx-2 rounded"> 
                                         Edit
-                                    </a>
+                                    </a> --}}
                                     <form action="{{ route('users.destroy', $item->id) }}" method="POST" class="inline-block">
                                         {!! method_field('delete') . csrf_field() !!}
                                         <button type="submit" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 mx-2 rounded">
