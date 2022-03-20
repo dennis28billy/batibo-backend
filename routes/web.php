@@ -41,6 +41,9 @@ Route::prefix('dashboard')
 
     });
 
+Route::get('/linkstorage', function () {
+    Artisan::call('storage:link');
+});
 
 //Midtrans related
 Route::get('midtrans/success', [MidtransController::class, 'success']);
