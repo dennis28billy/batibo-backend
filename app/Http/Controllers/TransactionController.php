@@ -21,7 +21,7 @@ class TransactionController extends Controller
         }
 
         return view('transactions.index',[
-            'transactions' => $transaction->paginate(10)
+            'transactions' => $transaction->where('payment_url', '!=', '')->paginate(10)
         ]);
     }
 
