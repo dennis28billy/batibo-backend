@@ -16,7 +16,7 @@ class DashboardController extends Controller
         $products = products::latest()->paginate(4);
         $users_count = User::count();
         $user = User::latest()->paginate(6);
-        $transactions_count = transaction::count();
+        $transactions_count = transaction::where('payment_url', '!=', '')->count();
         $transaction = transaction::with(['order','user'])->where('payment_url', '!=', '')->latest()->paginate(6);
 
         return view('dashboard',[
