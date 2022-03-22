@@ -44,7 +44,7 @@
                     <div class="mb-3 space-y-2 w-full text-xs">
                         <label class=" font-semibold text-gray-600 py-2">PROFILE PHOTO</label>
                         <div class="flex rounded-lg border-dashed border border-gray-700 py-12 flex flex-col justify-center items-center bg-white">
-                            <input type="file" value="{{ $item->profile_photo_path }}" name="profile_photo_path" placeholder="Choose image" id="image">
+                             <input type="file" value="{{ $item->profile_photo_path }}" name="profile_photo_path" placeholder="Choose image" id="image" title="required">
                                 @error('image')
                                 <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                                 @enderror
