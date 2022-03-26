@@ -20,6 +20,7 @@ class CreateTransactionsTable extends Migration
             $table->integer('user_id');
             $table->integer('address_id');
             $table->integer('total');
+            $table->integer('ongkosKirim');
             $table->string('status');
             $table->string('isOrder');
             $table->text('payment_url');
