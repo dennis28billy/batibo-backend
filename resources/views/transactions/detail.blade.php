@@ -24,8 +24,12 @@
                                 <div class="text-xl font-bold">{{ number_format($item->quantity) }}</div>
                             </div> --}}
                             <div class="w-1/6">
-                                <div class="text-sm">Total</div>
+                                <div class="text-sm">Total Cost</div>
                                 <div class="text-xl font-bold">{{ number_format($item->total) }}</div>
+                            </div>
+                            <div class="w-1/6">
+                                <div class="text-sm">Delivery Cost</div>
+                                <div class="text-xl font-bold">{{ number_format($item->ongkosKirim) }}</div>
                             </div>
                             <div class="w-1/6">
                                 <div class="text-sm">Status</div>
